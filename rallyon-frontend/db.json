@@ -1,0 +1,38 @@
+{
+  "protests": [
+    {
+      "id": "1",
+      "title": "노동권 보장을 위한 집회",
+      "date": "2025-07-03",
+      "location": "서울 여의도"
+    },
+    {
+      "id": "0296",
+      "title": "세종호텔 집중 집회",
+      "date": "2025-07-09",
+      "location": "명동 세종호텔 앞"
+    }
+  ],
+  "petitions": [
+    {
+      "id": "1",
+      "title": "노동시간 단축을 위한 입법 촉구",
+      "url": "https://example.com/petition/1",
+      "keywords": [
+        "노동",
+        "근로시간",
+        "복지"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "기후위기 대응 강화 청원",
+      "url": "https://example.com/petition/2",
+      "keywords": [
+        "기후",
+        "환경",
+        "탄소중립"
+      ]
+    }
+  ]
+}
