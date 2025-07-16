@@ -3,19 +3,22 @@ version: '3.8'
 services:
   db:
     image: postgres:14
-    container_name: rallyon_db
     environment:
-      POSTGRES_DB: rallyon
+      POSTGRES_DB: rallyon_db
       POSTGRES_USER: rallyon
       POSTGRES_PASSWORD: rallyon
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - ./rallyon-backend/src:/app/src
+      - ./rallyon-backend/build.gradle:/app/build.gradle
+      - ./rallyon-backend/settings.gradle:/app/settings.gradle
+      - postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
   backend:
-    build: ./backend
+    build: ./rallyon-backend
     container_name: rallyon_backend
+
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/rallyon
       SPRING_DATASOURCE_USERNAME: rallyon
@@ -26,7 +29,7 @@ services:
       - db
 
   frontend:
-    build: ./frontend
+    build: ./rallyon-frontend
     container_name: rallyon_frontend
     ports:
       - "5173:80"

@@ -1,15 +1,25 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/rallyondb
-    username: rallyon_dev
-    password: rallyondev1234
+    url: jdbc:postgresql://localhost:5432/rallyon
+    username: rallyon_user
+    password: rallyon
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update  # 개발 중에는 update, 운영 시에는 validate 또는 none 추천
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_scheme: rallyon
     show-sql: true
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    format_sql: true
+
+  springdoc:
+    api-docs:
+      enabled: true
+    swagger-ui:
+      enabled: true
 
   # 로컬 개발 시 포트 변경 가능
   server:
