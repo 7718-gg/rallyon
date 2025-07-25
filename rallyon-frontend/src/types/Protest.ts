@@ -2,5 +2,7 @@ export interface Protest {
   id: number
   title: string
   date: string
-  location: string
+  place: string
+  platform: string
+  description: string
 }

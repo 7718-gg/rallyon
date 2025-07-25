@@ -25,8 +25,7 @@ public class PlatformController {
 
     @GetMapping("/{code}")
     public Platform getByCode(@PathVariable String code) {
-        return service.getByCode(code)
-                .orElseThrow(() -> new RuntimeException("Platform not found: " + code));
+        return service.getByCode(code);
     }
 
     @PostMapping
@@ -37,10 +36,5 @@ public class PlatformController {
     @PutMapping("/{id}")
     public Platform update(@PathVariable Long id, @RequestBody Platform platform) {
         return service.update(id, platform);
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        service.delete(id);
     }
 }

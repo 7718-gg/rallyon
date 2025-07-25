@@ -1,9 +1,12 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/rallyon
-    username: rallyon_user
+    username: rallyon
     password: rallyon
     driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: never
 
   jpa:
     hibernate:
@@ -11,9 +14,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        default_scheme: rallyon
+        format_sql: true
     show-sql: true
-    format_sql: true
 
   springdoc:
     api-docs:
@@ -24,3 +26,13 @@ spring:
   # 로컬 개발 시 포트 변경 가능
   server:
     port: 8080
+  profiles:
+    include: code
+
+platform:
+  active: rallyon
+  codes:
+    rallyon: P-01-RLLYN
+    mustic: P-02-MSTC
+    carelender: P-03-CRLND
+

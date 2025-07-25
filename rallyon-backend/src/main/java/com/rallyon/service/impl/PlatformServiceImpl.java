@@ -23,7 +23,12 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     @Override
-    public Optional<Platform> getByCode(String code) {
+    public Optional<Platform> getByName(String name) {
+        return repository.findByName(name);
+    }
+
+    @Override
+    public Platform getByCode(String code) {
         return repository.findByCode(code);
     }
 
@@ -46,8 +51,8 @@ public class PlatformServiceImpl implements PlatformService {
                 .orElseThrow(() -> new RuntimeException("Platform not found with id: " + id));
     }
 
-    @Override
+    /*@Override
     public void delete(Long id) {
         repository.deleteById(id);
-    }
+    }*/
 }

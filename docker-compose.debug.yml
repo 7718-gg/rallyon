@@ -24,7 +24,7 @@ services:
       SPRING_DATASOURCE_USERNAME: rallyon
       SPRING_DATASOURCE_PASSWORD: rallyon
     ports:
-      - "8080:8080"
+      - "5005:5005"
     depends_on:
       - db
 
@@ -37,7 +37,7 @@ services:
       - ./rallyon-frontend:/app
     environment:
       - NODE_ENV=development
-      - VITE_API_BASE_URL=http://localhost:8080
+      - VITE_API_BASE_URL=http://localhost:5005
     depends_on:
       - backend
 

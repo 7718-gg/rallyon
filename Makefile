@@ -15,3 +15,11 @@ down:
 # 로그 보기
 logs:
 	docker-compose -f docker-compose.yml -f docker-compose.dev.yml logs -f
+	
+#디버그
+debug:
+	docker-compose -f docker-compose.dev.yml -f docker-compose.debug.yml up -d --build
+	
+#디버그다운
+debug-down:
+	docker-compose -f docker-compose.dev.yml -f docker-compose.debug.yml down

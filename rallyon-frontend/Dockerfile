@@ -16,6 +16,7 @@ FROM nginx:1.25-alpine
 
 # Nginx 기본 index.html 경로로 빌드된 파일 복사
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Nginx 포트 설정
 EXPOSE 80

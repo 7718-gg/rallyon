@@ -1,23 +1,26 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { type Protest } from '../../types/Protest'
+import { CURRENT_PLATFORM } from '../../types/Platform'
 
 const BASE_URL = 'http://localhost:8080'
 
 export default function ProtestForm({ onSubmit }: { onSubmit?: () => void }) {
   const [title, setTitle] = useState('')
   const [date, setDate] = useState('')
-  const [location, setLocation] = useState('')
+  const [place, setPlace] = useState('')
+  const [description, setDescription] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const newProtest: Omit<Protest, 'id'> = { title, date, location }
+    const newProtest: Omit<Protest, 'id'> = { title, date, place, description, platform: CURRENT_PLATFORM}
     try {
-      await axios.post(`${BASE_URL}/protests`, newProtest)
+      await axios.post(`${BASE_URL}/schedule/submit`, newProtest)
       alert('시위 등록 완료!')
       setTitle('')
       setDate('')
-      setLocation('')
+      setPlace('')
+      setDescription('')
       onSubmit?.()
     } catch (error) {
       alert('등록 실패')
@@ -46,8 +49,16 @@ export default function ProtestForm({ onSubmit }: { onSubmit?: () => void }) {
       <input
         type="text"
         placeholder="장소"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        value={place}
+        onChange={(e) => setPlace(e.target.value)}
+        className="w-full border p-2 rounded"
+        required
+      />
+      <input
+        type="text"
+        placeholder="설명"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
         className="w-full border p-2 rounded"
         required
       />

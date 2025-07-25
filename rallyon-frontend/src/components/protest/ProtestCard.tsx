@@ -14,7 +14,7 @@ export default function ProtestCard({ protest, petitions }: Props) {
   return (
     <div className="border rounded p-4 shadow mb-4">
       <h2 className="text-lg font-semibold">{protest.title}</h2>
-      <p>{protest.date} | {protest.location}</p>
+      <p>{protest.date} | {protest.place}</p>
 
       {matched.length > 0 && (
         <div className="mt-2">
@@ -22,7 +22,7 @@ export default function ProtestCard({ protest, petitions }: Props) {
           <ul className="list-disc pl-4 text-sm">
             {matched.map((pet) => (
               <li key={pet.id}>
-                <a href={pet.url} target="_blank" className="text-blue-600 underline">
+                <a href={pet.url} target="_blank" className="text-blue-600 underline" rel="noreferrer">
                   {pet.title}
                 </a>
               </li>
